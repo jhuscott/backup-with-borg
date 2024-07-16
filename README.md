@@ -21,12 +21,18 @@ backup (do)
 backup
 ```
 
-Create a new archive and then prune the repository archives. (Wraps `do-create` and `do-prune`. This can also be accomplished by simply invoking `backup`, 
-which if you have installed `backup-with-borg` to the default location will be `/usr/local/bin/backup`.)
+Create a new archive and then prune the repository archives. (Wraps `do-create` 
+and `do-prune`. This can also be accomplished by simply invoking `backup`, 
+which if you have installed `backup-with-borg` to the default location will be 
+`/usr/local/bin/backup`.)
 
 ### Wrapper
 
-You also can use native `borg` commands like `list` or mount. These will respect the exported `BORG_*` variables. So a plain `backup list` will list all of your current archives in the configured repository. If you want to execute `borg list` (or any other borg commands) on a specific borg archive, make sure you prepend two colons to the repository name. As an example:
+You also can use native `borg` commands like `list` or mount. These will 
+respect the exported `BORG_*` variables. So a plain `backup list` will list all 
+of your current archives in the configured repository. If you want to execute 
+`borg list` (or any other borg commands) on a specific borg archive, make sure 
+you prepend two colons to the repository name. As an example:
 
     # List borg archives, in this case there is one entry listed
     $ backup list
@@ -42,17 +48,24 @@ You also can use native `borg` commands like `list` or mount. These will respect
 
 ### Different configurations
 
-If you want to use different configurations on the same machine, you can set the `BACKUP_CONF`
-environment variable. For example, you may have `/etc/backup/default.env` as well as `/etc/backup/secondrepo.env` configuration files present. 
-To invoke the second configuration, which will execute the create and prune operations, simply enter:
+If you want to use different configurations on the same machine, you can set 
+the `BACKUP_CONF` environment variable. For example, you may have 
+`/etc/backup/default.env` as well as `/etc/backup/secondrepo.env` configuration 
+files present. To invoke the second configuration, which will execute the 
+create and prune operations, simply enter:
 `BACKUP_CONF=secondrepo /usr/local/bin/backup`
 
 ## Installation
 
-You need to have [borgbackup](https://github.com/borgbackup/borg/) prior to your first run. See [borg's installations instructions](https://borgbackup.readthedocs.io/en/stable/installation.html) for details.
+You need to install [borgbackup](https://github.com/borgbackup/borg/) prior to 
+your first run. See [borg's installations instructions](https://borgbackup.readthedocs.io/en/stable/installation.html) 
+for details.
+
+Note that for a single-user installation you can place your config files under
+the ~/.config/backup directory.
 
     # install scripts
-    git clone https://github.com/bebehei/backup-with-borg
+    git clone https://github.com/jhuscott/backup-with-borg
     cd backup-with-borg
     make install
     cp /etc/backup/{example,default}.env
