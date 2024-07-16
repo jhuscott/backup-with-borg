@@ -48,6 +48,10 @@ case "$1" in
 			${KEEP_YEARLY:+--keep-yearly=${KEEP_YEARLY}} \
 			${KEEP_LAST:+--keep-last=${KEEP_LAST}}
 		;;
+	
+	do-compact)
+		$CMD_BORG compact \
+			${OPT_BORG} ${OPT_BORG_COMPACT}
 
 	run|"")
 		"${BACKUP}" do-create \
