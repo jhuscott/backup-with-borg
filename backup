@@ -58,7 +58,9 @@ case "$1" in
 		"${BACKUP}" do-create \
 		|| die "borg failed to create archive."
 		"${BACKUP}" do-prune \
-		|| die "borg failed to prune archives"
+		|| die "borg failed to prune archives."
+		"${BACKUP}" do-compact \
+		|| die "borg failed to compact archives."
 		;;
 	*)
 		borg ${OPT_BORG} $*
