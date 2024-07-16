@@ -52,6 +52,7 @@ case "$1" in
 	do-compact)
 		$CMD_BORG compact \
 			${OPT_BORG} ${OPT_BORG_COMPACT}
+		;;
 
 	run|"")
 		"${BACKUP}" do-create \
