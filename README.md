@@ -85,6 +85,8 @@ the ~/.config/backup directory.
     backup init -e keyfile-blake2
 
 ** WARNING: Make sure you export the borg key and store the result in a safe place! **
+    backup key export --paper > ~/encrypted-key-backup.txt
+    backup key export --qr-html > ~/encrypted-key-backup.html
 
     # add cronjob (for hourly backup, which will execute (wrap) both do-create and do-prune)
     { crontab -l ; echo "0 * * * * /usr/local/bin/backup"; } | crontab -
