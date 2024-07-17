@@ -4,27 +4,34 @@ Backup tool to create easily archives with borgbackup.
 
 ## Usage
 
-```
-backup do-create
-```
-
 Create a new archive with your current configuration.
 
 ```
-backup do-prune
+backup do-create
 ```
 
 Prune your archives according to `KEEP_*` variables in the configuration file.
 
 ```
+backup do-prune
+```
+
+Compact your archives to free up space.  This functionality was separated from 
+borg's `prune` functionality in borg 1.2.
+
+```
+backup do-compact
+```
+
+Create a new archive, prune the repository archives, then compact the repository
+archives. (Wraps `do-create`, `do-prune`, and `do-compact`. This can also be 
+accomplished by simply invoking `backup`, which if you have installed 
+`backup-with-borg` to the default location will be `/usr/local/bin/backup`.)
+
+```
 backup (do)
 backup
 ```
-
-Create a new archive and then prune the repository archives. (Wraps `do-create` 
-and `do-prune`. This can also be accomplished by simply invoking `backup`, 
-which if you have installed `backup-with-borg` to the default location will be 
-`/usr/local/bin/backup`.)
 
 ### Wrapper
 
