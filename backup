@@ -31,6 +31,7 @@ case "$1" in
 			-x \
 			${OPT_BORG} ${OPT_BORG_CREATE} \
 			${EXCLUDE_FILE:+--exclude-from=${EXCLUDE_FILE}} \
+			${OPT_BORG_EXCLUDE_CACHES} \
 			${OPT_BORG_EXCLUDE_IF_PRESENT} \
 			::'{hostname}'${SUFFIX}'-{now:%Y-%m-%dT%H:%M:%S}' \
 			${SOURCES[@]:-/}
