@@ -28,7 +28,7 @@ which if you have installed `backup-with-borg` to the default location will be
 
 ### Wrapper
 
-You also can use native `borg` commands like `list` or mount. These will 
+You also can use native `borg` commands like `list` or `mount`. These will 
 respect the exported `BORG_*` variables. So a plain `backup list` will list all 
 of your current archives in the configured repository. If you want to execute 
 `borg list` (or any other borg commands) on a specific borg archive, make sure 
@@ -64,12 +64,15 @@ for details.
 Note that for a single-user installation you can place your config files under
 the ~/.config/backup directory.
 
-    # install scripts
+### Install scripts
+
     git clone https://github.com/jhuscott/backup-with-borg
     cd backup-with-borg
     make install
     cp /etc/backup/{example,default}.env
     cp /etc/backup/{example,default}.exclude
+
+### Edit default environment and exclusion config files
 
     # edit default.env to match backup data
     $EDITOR /etc/backup/default.env
@@ -78,7 +81,9 @@ the ~/.config/backup directory.
     # NOTE: Any directories that contain an empty file called `.nobackup` will automatically be excluded from the backup.
     $EDITOR /etc/backup/default.exclude
 
-    # initialize the repository. Note that with borg 1.1 you must specify the encryption type at initialization.
+### Initialize the repository
+
+    # Note that with borg ≥1.1 you must specify the encryption type at initialization.
     backup init -e <preferred_encryption_technique>
     # Suggest repokey-blake2 (key stored in repo) or keyfile-blake2 (separate keyfile, which is more secure)
     # e.g.: 
@@ -89,7 +94,9 @@ the ~/.config/backup directory.
     backup key export --paper > ~/encrypted-key-backup.txt
     backup key export --qr-html > ~/encrypted-key-backup.html
 
-    # add cronjob (for hourly backup, which will execute (wrap) both do-create and do-prune)
+### Add cron job
+    
+    # This example shows an hourly backup, which will execute (wrap) do-create, do-prune, and do-compact.
     { crontab -l ; echo "0 * * * * /usr/local/bin/backup"; } | crontab -
     # NOTE: If you are using a crontab entry, for security purposes, you should specify the full path to the script. The example given here
     # assumes you have installed backup-with-borg to the default location, e.g.: /usr/local/bin/backup.
