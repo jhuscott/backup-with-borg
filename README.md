@@ -80,8 +80,9 @@ the ~/.config/backup directory.
 
     # initialize the repository. Note that with borg 1.1 you must specify the encryption type at initialization.
     backup init -e <preferred_encryption_technique>
+    # Suggest repokey-blake2 (key stored in repo) or keyfile-blake2 (separate keyfile, which is more secure)
     # e.g.: 
-    backup init -e repokey-blake2
+    backup init -e keyfile-blake2
 
     # add cronjob (for hourly backup, which will execute (wrap) both do-create and do-prune)
     { crontab -l ; echo "0 * * * * /usr/local/bin/backup"; } | crontab -
