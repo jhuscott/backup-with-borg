@@ -40,7 +40,7 @@ case "$1" in
 	do-prune)
 		$CMD_BORG prune \
 			${OPT_BORG} ${OPT_BORG_PRUNE} \
-			--glob-archives='{hostname}'${SUFFIX} \
+			--glob-archives='{hostname}'${SUFFIX}'-*' \
 			${KEEP_WITHIN:+--keep-within=${KEEP_WITHIN}} \
 			${KEEP_HOURLY:+--keep-hourly=${KEEP_HOURLY}} \
 			${KEEP_DAILY:+--keep-daily=${KEEP_DAILY}} \
