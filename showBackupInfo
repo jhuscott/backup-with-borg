@@ -20,8 +20,7 @@ for repo in ${repolist[*]}; do
     echo "";
     echo "INFO FOR REPO: " $repo;
     echo "";
-    BACKUP_CONF=$repo backup info 2>/dev/null;
-    echo "";
+    BACKUP_CONF=$repo backup info 2>/dev/null | egrep "Repository|Location|Encrypted|Key|Cache|Security";
     echo "_______________________________________________________________________________";
     echo "";
     echo "INFO FOR LAST BACKUP ($LBU): ";
